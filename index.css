@@ -1,0 +1,6 @@
+.bi:hover{
+    cursor: pointer;   
+}
+.bi{
+    font-size: 1.5em;
+}
