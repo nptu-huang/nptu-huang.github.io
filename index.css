@@ -4,3 +4,20 @@
 .bi{
     font-size: 1.5em;
 }
+.container{
+    margin-top: 90px;
+}
+.alert{
+    display: none;
+}
+.alert.show{
+    display: block;
+    position: absolute;
+    background-color: rgb(247, 189, 208);
+    padding: 80px;
+    margin:auto;
+    margin-top: 25vh;
+    margin-left: 38vw;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+}
