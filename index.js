@@ -60,7 +60,7 @@ async function download(Msg) {
     var url = window.URL.createObjectURL(result);
     var a = document.createElement('a');
     a.href = url;
-    a.download = "test.json";
+    a.download = "test.wav";
     document.body.appendChild(a);
     a.click();
     a.remove();
