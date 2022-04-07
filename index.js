@@ -1,7 +1,7 @@
 let form = document.getElementsByTagName('form')[0];
 let input = document.getElementById('inputText');
 let server = "http://127.0.0.1:3000/";
-
+let taskItem = document.querySelectorAll('.list-group-item');
 
 
 function showAlert() {
@@ -24,8 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(result.message)
         input.value = "";
     });
+    for(let i of taskItem){
+        i.querySelector('.bi-volume-up-fill').addEventListener('click',async(e)=>{
+            let cnotent = i.querySelector('.task').textContent;
+            console.log('volume up');
+            await sendRequest(cnotent);
+        });
+        i.querySelector('.bi-arrow-down').addEventListener('click',async(e)=>{
+            let cnotent = i.querySelector('.task').textContent;
+            console.log(cnotent);
+            await download(cnotent);
+        });
+    }
+    
 
 });
+
+
 
 async function sendRequest(Msg) {
     let request = {
@@ -41,7 +56,8 @@ async function sendRequest(Msg) {
         body: JSON.stringify(request)
     })
 
-    result = await (await result).json()
+    result = await (await result).blob();
+    new Audio(result).play();
     return result;
 }
 
