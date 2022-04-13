@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
+console.log("Update 1259");
 
 async function play(Msg) {
     let request = {
@@ -59,7 +59,8 @@ async function play(Msg) {
     })
 
     result = await (await result).blob();
-    new Audio(result).play();
+    let bUrl = URL.createObjectURL(result);
+    new Audio(bUrl).play();
     return result;
 }
 
