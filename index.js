@@ -1,5 +1,6 @@
 let form = document.getElementsByTagName('form')[0];
 let input = document.getElementById('inputText');
+let testServer="https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 
@@ -47,7 +48,7 @@ async function sendRequest(Msg) {
         message: Msg
     }
 
-    let result = fetch(server, {
+    let result = fetch(testServer, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ async function download(Msg) {
     let request = {
         message: Msg
     }
-    let result = fetch(server, {
+    let result = fetch(testServer, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
