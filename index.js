@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let cnotent = i.querySelector('.task').textContent;
             console.log(cnotent);
             await download(cnotent);
+            console.log(cnotent,"hi");
         });
     }
     
