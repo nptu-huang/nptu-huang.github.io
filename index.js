@@ -1,6 +1,6 @@
 let form = document.getElementsByTagName('form')[0];
 let input = document.getElementById('inputText');
-let server = "http://172.29.7.115:9000/";
+let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 
 
