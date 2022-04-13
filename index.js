@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showAlert();
         else
             console.log('hi');
-        let result = await sendRequest(input.value);
+        let result = await play(input.value);
         console.log(result.message)
         input.value = "";
     });
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         i.querySelector('.bi-volume-up-fill').addEventListener('click',async(e)=>{
             let cnotent = i.querySelector('.task').textContent;
             console.log('volume up');
-            await sendRequest(cnotent);
+            await play(cnotent);
         });
         i.querySelector('.bi-arrow-down').addEventListener('click',async(e)=>{
             let cnotent = i.querySelector('.task').textContent;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-async function sendRequest(Msg) {
+async function play(Msg) {
     let request = {
         message: Msg
     }
