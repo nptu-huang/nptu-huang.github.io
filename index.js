@@ -3,9 +3,10 @@ let input = document.getElementById('inputText');
 let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
-let buffer=[];
+let buffer = {};
+let exist = [], tatal = [];
 
-let ver="0237";
+let ver = "0431";
 
 
 (function runMode(test = false) {
@@ -23,37 +24,29 @@ function showAlert() {
     }, 1500);
 }
 
+function playRecord(content){
+    //let content = nodeP.querySelector('.task').textContent;
+    new Audio(buffer[content]).play();
+}
+function downloadRecord(content){
+    download(content);
+}
+
 function setItem(strIn) {
+    tatal = [];
     let listitem = document.querySelector('.list-group');
-    let str = ''
-    str += `
+    let str = listitem;
+    str = `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
         <span class="task">${strIn}</span>
         <span class="task-item">
-            <span><i class="bi bi-volume-up-fill"></i></span>
-            <span><i class="bi bi-arrow-down"></i></span>
+            <span><i class="bi bi-volume-up-fill" onclick=playRecord("${strIn}") ></i></span>
+            <span><i class="bi bi-arrow-down" onclick=downloadRecord("${strIn}") ></i></span>
         </span>
     </li>
     `
     listitem.insertAdjacentHTML("beforeend", str);
-    for (let nodeP of listitem.querySelectorAll('.list-group-item')) {
-        let node;
-        node = nodeP.querySelector('.bi-volume-up-fill');
-        //Regist click event of Check icon
-        node.addEventListener('click', async(e) => {
-            let cnotent = nodeP.querySelector('.task').textContent;
-            console.log('volume up');
-            await play(cnotent);
-        });
-        node = nodeP.querySelector('.bi-arrow-down');
-        //Regist click event of Check icon
-        node.addEventListener('click', async(e) => {
-            let cnotent = nodeP.querySelector('.task').textContent;
-            console.log(cnotent);
-            await download(cnotent);
-            console.log(cnotent, "hi", new Date());
-        });
-    }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -66,15 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log('hi');
         setItem(input.value);
-        let result = play(input.value);
-        console.log(result.message)
+        playSend(input.value);
         input.value = "";
+
     });
-   
+
 });
 
-
-async function play(Msg) {
+async function playSend(Msg) {
     let request = {
         message: Msg
     }
@@ -90,26 +82,16 @@ async function play(Msg) {
 
     result = await (await result).blob();
     let bUrl = URL.createObjectURL(result);
+    buffer[Msg] = bUrl;
     new Audio(bUrl).play();
     return result;
 }
 
-async function download(Msg) {
-    let request = {
-        message: Msg
-    }
-    let result = fetch(server, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(request)
-    })
-    result = await (await result).blob();
-    var url = window.URL.createObjectURL(result);
+function download(Msg) {
+
     var a = document.createElement('a');
-    a.href = url;
-    a.download = "test.wav";
+    a.href = buffer[Msg];
+    a.download = `${Msg}.wav`;
     document.body.appendChild(a);
     a.click();
     a.remove();
