@@ -4,6 +4,12 @@ let testServer="https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 
+(function runMode(test = false){
+    if(test){
+        server = "https://localhost:8000/";
+        return
+    }
+})();
 
 function showAlert() {
     let alert = document.querySelector('.alert');
@@ -35,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let cnotent = i.querySelector('.task').textContent;
             console.log(cnotent);
             await download(cnotent);
-            console.log(cnotent,"hi");
+            console.log(cnotent,"hi",new Date());
         });
     }
     
@@ -49,7 +55,7 @@ async function play(Msg) {
         message: Msg
     }
 
-    let result = fetch(testServer, {
+    let result = fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -68,7 +74,7 @@ async function download(Msg) {
     let request = {
         message: Msg
     }
-    let result = fetch(testServer, {
+    let result = fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
