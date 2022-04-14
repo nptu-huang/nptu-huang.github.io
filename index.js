@@ -4,7 +4,7 @@ let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 let listitem = document.querySelector('.list-group');
-let ver="0228";
+let ver="0232";
 
 
 (function runMode(test = false) {
@@ -22,7 +22,7 @@ function showAlert() {
     }, 1500);
 }
 
-async function setItem(strIn) {
+function setItem(strIn) {
     let str = listitem.innerHTML;
     str += `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
@@ -38,14 +38,14 @@ async function setItem(strIn) {
         let node;
         node = nodeP.querySelector('.bi-volume-up-fill');
         //Regist click event of Check icon
-        node.addEventListener('click', (e) => {
+        node.addEventListener('click', async(e) => {
             let cnotent = i.querySelector('.task').textContent;
             console.log('volume up');
             await play(cnotent);
         });
         node = nodeP.querySelector('.bi-arrow-down');
         //Regist click event of Check icon
-        node.addEventListener('click', (e) => {
+        node.addEventListener('click', async(e) => {
             let cnotent = i.querySelector('.task').textContent;
             console.log(cnotent);
             await download(cnotent);
@@ -53,6 +53,7 @@ async function setItem(strIn) {
         });
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     //register add submit event
     form.addEventListener('submit', async (e) => {
