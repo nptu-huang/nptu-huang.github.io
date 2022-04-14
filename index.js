@@ -4,7 +4,7 @@ let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 let listitem = document.querySelector('.list-group');
-let ver="0219";
+let ver="0226";
 
 
 (function runMode(test = false) {
@@ -22,7 +22,7 @@ function showAlert() {
     }, 1500);
 }
 
-function setItem(strIn) {
+async function setItem(strIn) {
     let str = listitem.innerHTML;
     str += `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
