@@ -22,11 +22,11 @@ function showAlert() {
     }, 1500);
 }
 
-function setItem(str) {
+function setItem(strIn) {
     let str = listitem.innerHTML;
     str += `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
-        <span class="task">${str}</span>
+        <span class="task">${strIn}</span>
         <span class="task-item">
             <span><i class="bi bi-volume-up-fill"></i></span>
             <span><i class="bi bi-arrow-down"></i></span>
@@ -68,21 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(result.message)
         input.value = "";
     });
-    for (let i of taskItem) {
-        i.querySelector('.bi-volume-up-fill').addEventListener('click', async (e) => {
-            let cnotent = i.querySelector('.task').textContent;
-            console.log('volume up');
-            await play(cnotent);
-        });
-        i.querySelector('.bi-arrow-down').addEventListener('click', async (e) => {
-            let cnotent = i.querySelector('.task').textContent;
-            console.log(cnotent);
-            await download(cnotent);
-            console.log(cnotent, "hi", new Date());
-        });
-    }
-
-
+   
 });
 
 
