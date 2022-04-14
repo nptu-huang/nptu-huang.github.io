@@ -4,7 +4,7 @@ let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 let listitem = document.querySelector('.list-group');
-let ver="0226";
+let ver="0228";
 
 
 (function runMode(test = false) {
