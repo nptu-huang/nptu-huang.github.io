@@ -4,7 +4,7 @@ let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
 let listitem = document.querySelector('.list-group');
-let ver="0235";
+let ver="0237";
 
 
 (function runMode(test = false) {
@@ -33,7 +33,7 @@ function setItem(strIn) {
         </span>
     </li>
     `
-    listitem.insertAdjacentHTML("beforeend", litag);
+    listitem.insertAdjacentHTML("beforeend", str);
     for (let nodeP of listitem.querySelectorAll('.list-group-item')) {
         let node;
         node = nodeP.querySelector('.bi-volume-up-fill');
