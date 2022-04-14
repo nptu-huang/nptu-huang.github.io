@@ -63,10 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
             showAlert();
             return
         }
-
         console.log('hi');
         setItem(input.value);
-        let result = await play(input.value);
+        let result = play(input.value);
         console.log(result.message)
         input.value = "";
     });
