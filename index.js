@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-console.log("Update 1306");
+console.log("Update 1312");
 
 async function play(Msg) {
     let request = {
