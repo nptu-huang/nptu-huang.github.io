@@ -3,6 +3,7 @@ let input = document.getElementById('inputText');
 let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
+let buffer=[];
 
 let ver="0237";
 
