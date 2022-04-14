@@ -3,7 +3,7 @@ let input = document.getElementById('inputText');
 let testServer = "https://localhost:8000/";
 let server = "https://172.29.7.115:8000/";
 let taskItem = document.querySelectorAll('.list-group-item');
-let listitem = document.querySelector('.list-group');
+
 let ver="0237";
 
 
@@ -23,7 +23,8 @@ function showAlert() {
 }
 
 function setItem(strIn) {
-    let str = listitem.innerHTML;
+    let listitem = document.querySelector('.list-group');
+    let str = ''
     str += `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
         <span class="task">${strIn}</span>
