@@ -40,14 +40,14 @@ function setItem(strIn) {
         node = nodeP.querySelector('.bi-volume-up-fill');
         //Regist click event of Check icon
         node.addEventListener('click', async(e) => {
-            let cnotent = i.querySelector('.task').textContent;
+            let cnotent = nodeP.querySelector('.task').textContent;
             console.log('volume up');
             await play(cnotent);
         });
         node = nodeP.querySelector('.bi-arrow-down');
         //Regist click event of Check icon
         node.addEventListener('click', async(e) => {
-            let cnotent = i.querySelector('.task').textContent;
+            let cnotent = nodeP.querySelector('.task').textContent;
             console.log(cnotent);
             await download(cnotent);
             console.log(cnotent, "hi", new Date());
