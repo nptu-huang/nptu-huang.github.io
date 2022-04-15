@@ -25,12 +25,10 @@ function showAlert() {
 }
 
 function playRecord(content){
-    //let content = nodeP.querySelector('.task').textContent;
-    new Audio(buffer[content]).play();
+    
+    document.querySelector('audio').src = buffer[String(content).toString()];
 }
-function downloadRecord(content){
-    download(content);
-}
+
 
 function setItem(strIn) {
     tatal = [];
@@ -41,12 +39,12 @@ function setItem(strIn) {
         <span class="task">${strIn}</span>
         <span class="task-item">
             <span><i class="bi bi-volume-up-fill" onclick=playRecord("${strIn}") ></i></span>
-            <span><i class="bi bi-arrow-down" onclick=downloadRecord("${strIn}") ></i></span>
+            <span><i class="bi bi-arrow-down" onclick=download("${strIn}") ></i></span>
         </span>
     </li>
     `
     listitem.insertAdjacentHTML("beforeend", str);
-
+    
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return
         }
         console.log('hi');
-        setItem(input.value);
-        playSend(input.value);
+        
+        setItem(input.value,await playSend(input.value));
         input.value = "";
 
     });
@@ -67,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function playSend(Msg) {
+    let round = document.querySelector('.load');
+    round.classList.remove('hide');
     let request = {
         message: Msg
     }
@@ -83,8 +83,10 @@ async function playSend(Msg) {
     result = await (await result).blob();
     let bUrl = URL.createObjectURL(result);
     buffer[Msg] = bUrl;
-    new Audio(bUrl).play();
-    return result;
+    round.classList.add('hide');
+    document.querySelector('audio').src = bUrl;
+    //new Audio(bUrl).play();
+    return bUrl;
 }
 
 function download(Msg) {
