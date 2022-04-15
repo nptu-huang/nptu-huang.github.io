@@ -1,24 +1,13 @@
 body{
     background-color: beige;
 }
-body *{
-    z-index: 5;
-}
-.bck{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-content:center ;
-    width: 100%;
-}
-svg{
-    opacity: 0.5;
-    height: 80vh;
-}
+
 .bi:hover {
     cursor: pointer;
 }
-
+div{
+    position: relative;
+}
 .bi {
     font-size: 1.5em;
 }
@@ -85,7 +74,7 @@ audio::-webkit-media-controls-panel{
     position: absolute;
     width: 6px;
     height: 6px;
-    background: rgb(201, 110, 110);
+    background: rgb(107, 166, 221);
     border-radius: 50%;
     animation: lds-default 1.2s linear infinite;
 }
@@ -160,6 +149,26 @@ audio::-webkit-media-controls-panel{
     animation-delay: -1.1s;
     top: 52px;
     left: 62px;
+}
+
+.bck{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-content:center ;
+    width: 100%;
+    z-index: 0;
+}
+.bck-mask{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+svg{
+    opacity: 0.2;
+    height: 80vh;
+    z-index: 0;
 }
 
 @keyframes lds-default {
