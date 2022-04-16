@@ -1,0 +1,55 @@
+
+
+
+
+async function runMode() {
+
+    let testList = [
+        "https://localhost:8000/",
+        "https://172.29.7.115:8000/"
+    ]
+
+    for (let i of testList) {
+        const abortController = new AbortController()
+        const signal = abortController.signal
+        loadText.innerHTML += `Testing Server "${i}"<br>`;
+        let result, time;
+
+        try {
+            time = setTimeout(() => {
+                abortController.abort();
+            }, 3000);
+
+            result = await fetch(i, {
+                method: 'GET',
+                signal: signal,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow',
+            });
+            clearTimeout(time)
+            result = await result.text();
+        }
+        catch (err) {
+            clearTimeout(time)
+            loadText.innerHTML += `"${i}" is timeout<br>`;
+            
+            continue;
+        }
+        if (result == "Hello") {
+            loadText.innerHTML += `"${i}" is connected<br>`;
+            delay(1000);
+            loading.forEach(i => { i.classList.add('hide') });
+            server = i;
+            return server;
+        }
+    
+    }
+    loadText.innerHTML = `Can not Connect to server`;
+
+}
+
+export default {
+    runMode,
+}
