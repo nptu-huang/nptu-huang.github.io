@@ -14,7 +14,7 @@ async function runMode() {
         const signal = abortController.signal
         loadText.innerHTML += `Testing Server "${i}"<br>`;
         let result, time;
-
+        await delay(300);
         try {
             time = setTimeout(() => {
                 abortController.abort();
@@ -34,20 +34,21 @@ async function runMode() {
         catch (err) {
             clearTimeout(time)
             loadText.innerHTML += `"${i}" is timeout<br>`;
-            
             continue;
         }
         if (result == "Hello") {
             loadText.innerHTML += `"${i}" is connected<br>`;
-            delay(1000);
+            await delay(2000)
             loading.forEach(i => { i.classList.add('hide') });
             server = i;
             return server;
         }
     
     }
+    await delay(5000)
     loadText.innerHTML = `Can not Connect to server`;
-
+    await delay(10000)
+    loading.forEach(i => { i.classList.add('hide') });
 }
 
 export default {
