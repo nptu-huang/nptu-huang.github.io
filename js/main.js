@@ -42,7 +42,7 @@ async function testFetch(){
     let len = String(data['voice']).length
     png = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1)
     console.log(png);
-
+    console.log(data['message']);
 
     document.querySelector('audio').src=png;
     
