@@ -23,3 +23,17 @@ async function delay(t)
         setTimeout(resolve,t);
     })
 }
+
+async function testFetch(){
+    let request = {
+        message: "jin1 tian1 ou1 yin4"
+    };
+
+    let result =await fetch(server+"download", {
+        method: "GET",
+        redirect: 'follow',
+        
+    });
+    
+    
+}

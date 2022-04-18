@@ -39,9 +39,9 @@ async function runMode() {
         }
         if (result == "Hello") {
             loadText.innerHTML += `"${i}" is connected<br>`;
+            server = i;
             delay(1000);
             loading.forEach(i => { i.classList.add('hide') });
-            server = i;
             return server;
         }
     

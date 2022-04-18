@@ -50,7 +50,12 @@ async function playSend(Msg) {
         redirect: 'follow',
         body: JSON.stringify(request)
     })
- 
+    result.then(res=>{
+        console.log("res",res);
+        res.headers.forEach(i=>{
+            console.log("i",i)
+        })
+    })
     result = await (await result).blob();
     let bUrl = URL.createObjectURL(result);
     buffer[hash(Msg)] = bUrl;
