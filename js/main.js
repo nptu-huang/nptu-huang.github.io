@@ -1,4 +1,4 @@
-let server = "";
+let server = "http://localhost:9000/";
 let buffer = {};
 let loading = document.querySelectorAll('.load');
 let loadText = document.querySelector('.load-text');
@@ -30,12 +30,12 @@ async function testFetch(){
         message: "jin1 tian1 ou1 yin4 ming2 tian1 fa1 cai2 hou4 tian1 jiu4 tui4 xiu1"
     }
     result = await fetch(server, {
-        method: 'get',
+        method: 'post',
         headers: {
             'Content-Type': 'application/json'
         },
         redirect: 'follow',
-
+        body: JSON.stringify(request)
     });
     
     let data = await result.json();
@@ -46,4 +46,18 @@ async function testFetch(){
 
     document.querySelector('audio').src=png;
     
+}
+
+
+async function test(){
+    let result;
+    result = await fetch(server, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+    });
+    result = await result.text();
+    console.log(result)
 }

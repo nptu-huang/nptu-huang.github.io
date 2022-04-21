@@ -6,9 +6,7 @@ async function runMode() {
 
     let testList = [
         "http://localhost:9000/",
-        "http://172.29.7.115:9000/",
-        "https://localhost:9000/",
-        "https://172.29.7.115:9000/"
+        "http://172.29.7.115:9000/"
     ]
 
     for (let i of testList) {
@@ -32,6 +30,7 @@ async function runMode() {
             });
             clearTimeout(time)
             result = await result.text();
+            console.log("result :",result);
         }
         catch (err) {
             clearTimeout(time)
