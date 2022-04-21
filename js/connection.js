@@ -5,8 +5,8 @@
 async function runMode() {
 
     let testList = [
-        "https://localhost:8000/",
-        "https://172.29.7.115:8000/"
+        "https://localhost:9000/",
+        "https://172.29.7.115:9000/"
     ]
 
     for (let i of testList) {
