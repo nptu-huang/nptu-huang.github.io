@@ -20,7 +20,7 @@ async function runMode() {
         try {
             time = setTimeout(() => {
                 abortController.abort();
-            }, 9000);
+            }, 3000);
 
             result = await fetch(i, {
                 method: 'GET',
