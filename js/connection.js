@@ -5,6 +5,8 @@
 async function runMode() {
 
     let testList = [
+        "http://localhost:9000/",
+        "http://172.29.7.115:9000/",
         "https://localhost:9000/",
         "https://172.29.7.115:9000/"
     ]
@@ -18,7 +20,7 @@ async function runMode() {
         try {
             time = setTimeout(() => {
                 abortController.abort();
-            }, 3000);
+            }, 9000);
 
             result = await fetch(i, {
                 method: 'GET',
