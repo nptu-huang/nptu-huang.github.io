@@ -29,13 +29,13 @@ async function testFetch(){
     let request = {
         message: "jin1 tian1 ou1 yin4 ming2 tian1 fa1 cai2 hou4 tian1 jiu4 tui4 xiu1"
     }
-    result = await fetch(server+"test", {
-        method: 'post',
+    result = await fetch(server, {
+        method: 'get',
         headers: {
             'Content-Type': 'application/json'
         },
         redirect: 'follow',
-        body: JSON.stringify(request)
+
     });
     
     let data = await result.json();
