@@ -26,6 +26,8 @@ async function runMode() {
                 headers: {
                     'Content-Type': 'application/json',
                     "Oringin-Trial":"AstmEHS3busYlixToMZbeRahTB50yq9A+raC40ZGJMK2Aimi+oHyR4fT5wuKHBsGywLlTh3GPCeK2KHOJjnSIAMAAAB3eyJvcmlnaW4iOiJodHRwOi8vZ2l0LnNoYXJrLXNtYWxsLmNvbTo4MCIsImZlYXR1cmUiOiJQcml2YXRlTmV0d29ya0FjY2Vzc05vblNlY3VyZUNvbnRleHRzQWxsb3dlZCIsImV4cGlyeSI6MTY2NjEzNzU5OX0=",
+                    "Access-Control-Request-Private-Network": "true",
+                    
                 },
                 redirect: 'follow',
             });
