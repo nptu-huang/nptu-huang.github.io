@@ -5,8 +5,9 @@
 async function runMode() {
 
     let testList = [
-        "http://localhost:9000/",
-        "http://172.29.7.115:9000/"
+        "http://localhost:9001/",
+        "http://163.24.242.210:9000/",
+        "http://server.nvda888.tk:9000/"
     ]
 
     for (let i of testList) {
