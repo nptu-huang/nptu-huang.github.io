@@ -47,7 +47,7 @@ async function runMode() {
         }
     
     }
-    await delay(5000)
+    await delay(1000)
     loadText.innerHTML = `Can not Connect to server`;
     await delay(10000)
     loading.forEach(i => { i.classList.add('hide') });
