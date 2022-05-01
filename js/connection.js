@@ -26,6 +26,7 @@ async function runMode() {
                 signal: signal,
                 headers: {
                     'Content-Type': 'application/json',  
+                    "Access-Control-Allow-Origin":true
                 },
                 redirect: 'follow',
             });

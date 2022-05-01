@@ -27,31 +27,33 @@ async function delay(t)
 async function testFetch(){
     console.clear()
     let request = {
-        message: "jin1 tian1 ou1 yin4 ming2 tian1 fa1 cai2 hou4 tian1 jiu4 tui4 xiu1"
+        message: "耕田同讀書"
     }
-    result = await fetch(server, {
+    let result = await fetch(server+"/test", {
         method: 'post',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":true
         },
         redirect: 'follow',
         body: JSON.stringify(request)
     });
     
     let data = await result.json();
+    console.log(data)
     let len = String(data['voice']).length
-    png = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1)
-    console.log(png);
+    let wav = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1)
+    console.log(wav);
     console.log(data['message']);
 
-    document.querySelector('audio').src=png;
+    document.querySelector('audio').src=wav;
     
 }
 
 
 async function test(){
     let result;
-    result = await fetch("http://172.29.7.115:9000", {
+    result = await fetch("http://server.nvda888.tk:9000", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
