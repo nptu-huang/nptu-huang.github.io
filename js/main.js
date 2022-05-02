@@ -31,11 +31,11 @@ async function testFetch(Msg="耕田同讀書"){
     let request = {
         message: Msg
     }
-    let result = await fetch(server+"/test", {
+    let result = await fetch(server+"test", {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin":true
+            "Access-Control-Allow-Origin":"http://server.nvda888.tk"
         },
         redirect: 'follow',
         body: JSON.stringify(request)

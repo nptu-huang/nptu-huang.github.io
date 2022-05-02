@@ -74,8 +74,9 @@ async function playSend2(Msg=""){
     loadText.innerHTML = "Loading";
     loading.forEach(i => { i.classList.remove('hide') });
     let request = {
-        message: Msg
+        message: `${Msg}`
     }
+    console.log(request.message)
     let result = await fetch(server, {
         method: 'post',
         headers: {
