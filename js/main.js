@@ -24,10 +24,12 @@ async function delay(t)
     })
 }
 
-async function testFetch(){
+async function testFetch(Msg="耕田同讀書"){
     console.clear()
+    loadText.innerHTML = "Loading";
+    loading.forEach(i => { i.classList.remove('hide') });
     let request = {
-        message: "耕田同讀書"
+        message: Msg
     }
     let result = await fetch(server+"/test", {
         method: 'post',
@@ -40,13 +42,18 @@ async function testFetch(){
     });
     
     let data = await result.json();
-    console.log(data)
-    let len = String(data['voice']).length
-    let wav = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1)
-    console.log(wav);
-    console.log(data['message']);
-
+    
+    let len = String(data['voice']).length;
+    let wav = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1);
     document.querySelector('audio').src=wav;
+    console.log(data["hakkaTone"])
+    loading.forEach(i => { i.classList.add('hide') });
+    return {
+        input:Msg,
+        hakkaStr:data["hakkaStr"]??"",
+        hakkaTone:data["hakkaTone"]
+
+    }
     
 }
 
