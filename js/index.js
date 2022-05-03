@@ -1,7 +1,7 @@
 import connect from './connection.js'
-let form = document.getElementsByTagName('form')[0];
+let form = document.querySelector('form');
 let input = document.getElementById('inputText');
-
+let input2 = document.getElementById('inputText2');
 let tatal = [];
 
 
@@ -35,7 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         let data = await playSend2(input.value)
         setItem(data);
+        input2.value=data.hakkaTone;
         
+
+    });
+    document.querySelector('form:nth-child(2)').addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        if (input2.value == "") {
+            showAlert();
+            return
+        }
+        let data = await playSend2(input.value)
+        setItem(data);
 
     });
 
