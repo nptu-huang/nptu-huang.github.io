@@ -117,8 +117,9 @@ function setItem(item={input:"",hakkaStr:"",hakkaTone:""}) {
     str = `
     <li class="list-group-item d-flex justify-content-between align-items-center task-item-o">
         <div>
-        <span class="task">你的輸入：${item.input}</span><br>
-        <span class="task">客文字：${item.hakkaStr}</span><br>
+        <span class="task">中文字：${item.hakkaStr}</span><br>
+        <!--<span class="task">客文字：${item.hakkaStr}</span><br>-->
+        <span class="task">客文字：${item.input}</span><br>
         <span class="task">客語音標：${item.hakkaTone}</span>
         </div>
         <span class="task-item">
