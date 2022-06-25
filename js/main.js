@@ -31,7 +31,7 @@ async function testFetch(Msg="耕田同讀書"){
     let request = {
         message: Msg
     }
-    let result = await fetch(server+"test", {
+    let result = await fetch(server, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
