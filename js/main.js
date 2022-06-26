@@ -3,7 +3,7 @@ let buffer = {};
 let loading = document.querySelectorAll('.load');
 let loadText = document.querySelector('.load-text');
 
-let mode = 'f'
+let mode = 't'
 
 function playRecord(content) {
 
