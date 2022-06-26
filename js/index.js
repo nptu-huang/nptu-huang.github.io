@@ -22,7 +22,7 @@ const hash = function (str, seed = 0) {
 
 document.addEventListener('DOMContentLoaded', () => {
     //register add submit event
-    form.addEventListener('submit', async (e) => {
+    document.querySelectorAll('form')[0].addEventListener('submit', async (e) => {
         e.preventDefault();
         if (input.value == "") {
             showAlert();
@@ -36,9 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = await playSend2(input.value)
         setItem(data);
         input2.value=data.hakkaTone;
-        
+    });
+    
+    document.querySelectorAll("#inputText")[0].addEventListener('input',async(e)=>{
+        let data = await getHKTone(input.value)
+        input2.value=data.hakkaTone;
 
     });
+
     document.querySelectorAll('form')[1].addEventListener('submit',async(e)=>{
         e.preventDefault();
         if (input2.value == "") {
@@ -52,6 +57,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+async function getHKTone(Msg) {
+
+    let request = {
+        message: `${Msg}`
+    }
+    console.log(request.message)
+    let result = await fetch(server+"hkTone", {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":true
+        },
+        redirect: 'follow',
+        body: JSON.stringify(request)
+    });
+    
+    let data = await result.json();
+
+    console.log(data["hakkaTone"])
+
+    return {
+        input:Msg,
+        hakkaStr:data["hakkaStr"]??"",
+        hakkaTone:data["hakkaTone"]
+
+    }
+
+}
+
 async function playSend(Msg) {
     loadText.innerHTML = "Loading";
     loading.forEach(i => { i.classList.remove('hide') });
@@ -59,7 +93,7 @@ async function playSend(Msg) {
         message: `${Msg}`
     }
     console.log(request.message)
-    let result = await fetch(server+"text", {
+    let result = await fetch(server+"hkTone", {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

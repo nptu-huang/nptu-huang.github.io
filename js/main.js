@@ -24,14 +24,14 @@ async function delay(t)
     })
 }
 
-async function testFetch(Msg="耕田同讀書"){
+async function testFetch(Msg="阿爸講𠊎等客家人盡重要个兩件事"){
     console.clear()
     loadText.innerHTML = "Loading";
     loading.forEach(i => { i.classList.remove('hide') });
     let request = {
         message: Msg
     }
-    let result = await fetch(server, {
+    let result = await fetch(server+'test', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
