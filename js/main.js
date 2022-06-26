@@ -3,6 +3,8 @@ let buffer = {};
 let loading = document.querySelectorAll('.load');
 let loadText = document.querySelector('.load-text');
 
+let mode = 'f'
+
 function playRecord(content) {
 
     document.querySelector('audio').src = buffer[content];

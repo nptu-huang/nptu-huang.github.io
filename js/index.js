@@ -33,7 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
             hakkaStr:"",
             hakkaTone:""
         }
-        let data = await playSend2(input.value)
+        let data 
+        if(mode=='f'){
+            data= await playSendF(input.value)
+        }
+        else if(mode == 't') {
+            data= await playSend(input.value)
+        }
         setItem(data);
         input2.value=data.hakkaTone;
     });
@@ -50,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showAlert();
             return
         }
-        let data = await playSend(input2.value)
+        let data = await playSend2(input2.value)
         setItem2(data);
 
     });
@@ -93,7 +99,39 @@ async function playSend(Msg) {
         message: `${Msg}`
     }
     console.log(request.message)
-    let result = await fetch(server+"hkTone", {
+    let result = await fetch(server, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":true
+        },
+        redirect: 'follow',
+        body: JSON.stringify(request)
+    });
+    
+    let data = await result.json();
+    
+    let len = String(data['voice']).length;
+    let wav = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1);
+    document.querySelector('audio').src=wav;
+    console.log(data["hakkaTone"])
+    loading.forEach(i => { i.classList.add('hide') });
+    return {
+        input:Msg,
+        hakkaStr:data["hakkaStr"]??"",
+        hakkaTone:data["hakkaTone"]
+
+    }
+
+}
+async function playSendF(Msg) {
+    loadText.innerHTML = "Loading";
+    loading.forEach(i => { i.classList.remove('hide') });
+    let request = {
+        message: `${Msg}`
+    }
+    console.log(request.message)
+    let result = await fetch(server+'f', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
