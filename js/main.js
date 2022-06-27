@@ -61,11 +61,13 @@ async function testFetch(Msg="阿爸講𠊎等客家人盡重要个兩件事"){
 
 
 async function test(url = "",str=""){
-    let serverIP="http://server.nvda888.tk:9000"
+    console.clear()
+    loadText.innerHTML = "Loading";
+    loading.forEach(i => { i.classList.remove('hide') });
     let request = {
-        message: Msg
+        message: str
     }
-    let result = await fetch(serverIP+url, {
+    let result = await fetch(server+url, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -74,6 +76,18 @@ async function test(url = "",str=""){
         redirect: 'follow',
         body: JSON.stringify(request)
     });
-    result = await result.text();
-    console.log(result)
+    
+    let data = await result.json();
+    
+    let len = String(data['voice']).length;
+    let wav = "data:audio/wav;base64,"+String(data['voice']).substring(2,len-1);
+    document.querySelector('audio').src=wav;
+    console.log(data["hakkaTone"])
+    loading.forEach(i => { i.classList.add('hide') });
+    return {
+        input:str,
+        hakkaStr:data["hakkaStr"]??"",
+        hakkaTone:data["hakkaTone"]
+
+    }
 }
