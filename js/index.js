@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data= await playSendF(input.value)
         }
         else if(mode == 't') {
-            data= await playSend(input2.value)
+            data= await playSend(input.value)
         }
         setItem(data);
         input2.value=data.hakkaTone;
