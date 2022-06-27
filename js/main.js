@@ -60,15 +60,19 @@ async function testFetch(Msg="阿爸講𠊎等客家人盡重要个兩件事"){
 }
 
 
-async function test(){
-    let result;
-    result = await fetch("http://server.nvda888.tk:9000", {
-        method: 'GET',
+async function test(url = "",str=""){
+    let serverIP="http://server.nvda888.tk:9000"
+    let request = {
+        message: Msg
+    }
+    let result = await fetch(serverIP+url, {
+        method: 'post',
         headers: {
             'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":"http://server.nvda888.tk"
         },
-        mode:"cors",
         redirect: 'follow',
+        body: JSON.stringify(request)
     });
     result = await result.text();
     console.log(result)
