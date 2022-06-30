@@ -1,0 +1,56 @@
+body,html{
+    margin: 0;
+}
+#app{
+    display: flex;
+    flex-direction: row;
+}
+.panel{
+    height: 100vh;
+}
+.right{
+    background-color: aliceblue;
+    width: 80vw;
+    border-left: 1px solid rgb(199, 199, 199);
+}
+.left{
+    background-color: aliceblue;
+    width: 20vw;
+}
+.player{
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+    align-content: center;
+}
+audio::-webkit-media-controls-panel {
+    background-color: aliceblue;
+}
+.list{
+    height: 90vh;
+    background-color: antiquewhite;
+}
+.list-item{
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    background-color: aliceblue;
+    padding: 10px;
+    border-top: 1px solid rgb(196, 196, 196);
+    transition: background-color 0.8s ease;
+    height: 4.3em;
+    overflow: hidden;
+}
+.list-item:hover {
+    content: "";
+    background-color: rgb(224, 224, 224);
+    transition: background-color 0.5s ease;
+}
+.list-item span{
+    display : inline-block;
+    width: 100%;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    white-space : nowrap;
+    margin-bottom: 3px;
+}
