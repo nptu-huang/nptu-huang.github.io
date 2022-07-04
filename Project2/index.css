@@ -1,5 +1,6 @@
 body,html{
     margin: 0;
+    overflow: hidden;
 }
 #app{
     display: flex;
@@ -12,23 +13,52 @@ body,html{
     background-color: aliceblue;
     width: 80vw;
     border-left: 1px solid rgb(199, 199, 199);
+    padding: 20px;
 }
 .left{
-    background-color: aliceblue;
+    background-color: rgb(214, 236, 255);
     width: 20vw;
+}
+.add{
+    margin-top: 10px;
+    align-self: center;
+    text-align: center;
+    background-color: rgba(44, 170, 219, 0.76);
+    cursor: pointer;
+    width: 5em;
+    border-radius: 10px;
+    border: 1px solid rgba(146, 146, 146, 0.671);
+    transition: all 0.4s ease;
+    user-select: none;
+}
+.add:hover{
+    background-color: rgba(44, 169, 219, 0.541);
+    border: 1px solid rgba(146, 146, 146, 0.884);
+    transition: all 0.4s ease;
 }
 .player{
     display: flex;
-    margin: 20px auto;
+    flex-direction: column;
     justify-content: center;
     align-content: center;
 }
 audio::-webkit-media-controls-panel {
-    background-color: aliceblue;
+    background-color: rgb(214, 236, 255);
 }
 .list{
     height: 90vh;
     background-color: antiquewhite;
+    overflow-y: scroll;
+}
+.list::-webkit-scrollbar{
+    width: 1px;
+}
+.list::-webkit-scrollbar-track{
+    opacity: 1;
+    background-color: rgb(185, 185, 185);
+}
+.list::-webkit-scrollbar-thumb{
+    background-color: rgb(97, 97, 97);
 }
 .list-item{
     display: flex;
@@ -53,4 +83,55 @@ audio::-webkit-media-controls-panel {
     text-overflow: ellipsis;
     white-space : nowrap;
     margin-bottom: 3px;
+}
+.list-item.active{
+    background-color: rgba(182, 223, 250, 0.644);
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.row input{
+    outline: none;
+    background-color: aliceblue;
+    border: 0px;
+    margin-top: 10px;
+}
+.row input:nth-child(1){
+    width: 20em;
+}
+.row input:nth-child(2){
+    width: 6.8em;
+}
+.row input[type=text]{
+    border-top:1px solid black ;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding-left: 15px;
+    width: 70%;
+    font-size: 1.2em;
+}
+.row input[type=button]{
+    cursor: pointer;
+    border-top:1px solid black ;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-left: 1px solid rgba(0, 0, 0, 0.233);
+    background-color: rgb(197, 228, 255);
+    text-align: left;
+    font-size: 1.5em;
+    transition: background-color 0.4s ease;
+}
+
+.row input[type=button]:hover{
+    background-color: rgb(134, 199, 255);
+    transition: background-color 0.4s ease;
 }

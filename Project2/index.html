@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBB108047 杜孟憲</title>
+    <title>客語New Sample</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
     <link rel="stylesheet" href="./index.css">
 </head>
@@ -13,11 +13,11 @@
 <body>
 
     <div id="app">
-        
+
         <div class="left panel">
             <div class="list">
-                
-                <div class="list-item" v-for="item in items" :key="item.id">
+
+                <div class="list-item" :class="{active: item.isClick}" v-for="(item,index) in items" :key="item.chinese" @click="this.itemClick(index)">
                     <span>中文 : {{ item.chinese }}</span>
                     <span>客文 : {{item.hakka}}</span>
                     <span>客語拼音 : {{item.pinyin}}</span>
@@ -25,15 +25,30 @@
 
             </div>
             <div class="player">
+                <div class="add" @click="addItem">ADD</div>
                 <audio controls autoplay muted></audio>
             </div>
 
         </div>
-        
+
         <div class="right panel">
-            <div class="sample">
-                Test
-            </div>
+            <form class="col">
+
+                <div class="row">
+                    <input type="text" v-model.value="items[shows]['chinese']" >
+                    <input type="button" value="國字轉客語字"></input>
+                </div>
+                <div class="row">
+                    <input type="text" v-model.value="items[shows]['hakka']">
+                    <input type="button" value="客語字轉拼音"></input>
+                </div>
+                <div class="row">
+                    <input type="text" v-model.value="items[shows]['pinyin']">
+                    <input type="button" value="拼音轉語音"></input>
+                </div>
+
+            </form>
+
         </div>
 
     </div>
