@@ -2,6 +2,9 @@ body,html{
     margin: 0;
     overflow: hidden;
 }
+.menu{
+    display: none;
+}
 #app{
     display: flex;
     flex-direction: row;

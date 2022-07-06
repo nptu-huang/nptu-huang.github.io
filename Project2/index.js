@@ -18,6 +18,7 @@ const hakka = {
             ],
             shows:0,
             mode:0,
+            menu:0,
             server:"",
 
         }
@@ -36,6 +37,7 @@ const hakka = {
                 item.isClick =false;
             });
             this.items[id].isClick =true;
+            this.menu = !this.menu;
         },
         addItem(){
             this.items.push({

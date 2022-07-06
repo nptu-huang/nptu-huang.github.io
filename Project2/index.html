@@ -8,14 +8,14 @@
     <title>客語New Sample</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/RWD.css">
+    <link rel="stylesheet" href="./css/phone.css">
 </head>
 
 <body>
 
     <div id="app">
 
-        <div class="left panel">
+        <div class="left panel" :class="{ active: menu }" >
             <div class="list">
 
                 <div class="list-item" :class="{active: item.isClick}" v-for="(item,index) in items" :key="item.chinese"
@@ -29,7 +29,7 @@
             <div class="controler">
 
                 <div class="add" @click="addItem">ADD</div>
-                <div class="row">
+                <div class="row" style="margin:10px;">
                     <span>模式：</span>
                     <div class="slide-switch" :class="{active: mode}" @click="switchMode()">
                         <div class="ball"></div>
@@ -40,6 +40,8 @@
 
         </div>
 
+        <div @click="this.menu = !this.menu" class="menu"></div>
+        
         <div class="right panel">
             <form class="col">
 
@@ -61,6 +63,7 @@
         </div>
 
     </div>
+
 
 </body>
 

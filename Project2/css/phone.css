@@ -1,0 +1,31 @@
+@media screen and (min-width:375px) and (max-width: 540px) {
+
+    .menu{
+        position: absolute;
+        display: block;
+        content: ">";
+        top: 50vh;
+        color: black;
+        background-color: aqua;
+        padding: 10px;
+
+    }
+    .right {
+        background-color: aliceblue;
+        width: 100vw;
+        border-left: 1px solid rgb(199, 199, 199);
+        padding: 20px;
+    }
+
+    .left {
+        position: absolute;
+        background-color: rgb(144, 203, 255);
+        width: 100vw;
+        left: -100vw;
+        transition: left 0.5s ease;
+    }
+    .left.active {
+        left: 0vw;
+        transition: left 0.5s ease;
+    }
+}
