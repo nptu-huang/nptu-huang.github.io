@@ -16,7 +16,10 @@ const hakka = {
                 },
                 
             ],
-            shows:0
+            shows:0,
+            mode:0,
+            server:"",
+
         }
 
     },
@@ -43,14 +46,64 @@ const hakka = {
             })
             this.itemClick(this.items.length-1);
         },
-        c2h(){
+        async c2h(){
+
+            let request = {
+                message: this.items[shows]['chinese']
+            }
+
+            let result = await fetch(this.server+"/c2h", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin":"http://server.nvda888.tk"
+                },
+                redirect: 'follow',
+                body: JSON.stringify(request)
+            });
+            let data = await result.json();
+            this.items[shows]['hakka'] = data['Msg']??"";
 
         },
-        h2p(){
+        async h2p(){
+           
+            let request = {
+                message: this.items[shows]['hakka']
+            }
 
+            let result = await fetch(this.server+"/h2p", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin":"http://server.nvda888.tk"
+                },
+                redirect: 'follow',
+                body: JSON.stringify(request)
+            });
+            let data = await result.json();
+            this.items[shows]['pinyin'] = data['Msg']??"";
         },
-        p2v(){
+        async p2v(){
             
+            let request = {
+                message: this.items[shows]['pinyin']
+            }
+
+            let result = await fetch(this.server+this.mode?'/f':'/t'+"/p2v", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin":"http://server.nvda888.tk"
+                },
+                redirect: 'follow',
+                body: JSON.stringify(request)
+            });
+            let data = await result.json();
+            document.querySelector('audio').src = data['Msg'];
+        },
+        switchMode(){
+            this.mode=!this.mode;
+            console.log(this.mode)
         }
     },
 

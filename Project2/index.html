@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>客語New Sample</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/RWD.css">
 </head>
 
 <body>
@@ -17,16 +18,24 @@
         <div class="left panel">
             <div class="list">
 
-                <div class="list-item" :class="{active: item.isClick}" v-for="(item,index) in items" :key="item.chinese" @click="this.itemClick(index)">
+                <div class="list-item" :class="{active: item.isClick}" v-for="(item,index) in items" :key="item.chinese"
+                    @click="this.itemClick(index)">
                     <span>中文 : {{ item.chinese }}</span>
                     <span>客文 : {{item.hakka}}</span>
                     <span>客語拼音 : {{item.pinyin}}</span>
                 </div>
 
             </div>
-            <div class="player">
+            <div class="controler">
+
                 <div class="add" @click="addItem">ADD</div>
-                <audio controls autoplay muted></audio>
+                <div class="row">
+                    <span>模式：</span>
+                    <div class="slide-switch" :class="{active: mode}" @click="switchMode()">
+                        <div class="ball"></div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -35,16 +44,16 @@
             <form class="col">
 
                 <div class="row">
-                    <input type="text" v-model.value="items[shows]['chinese']" >
-                    <input type="button" value="國字轉客語字"></input>
+                    <input type="text" v-model.value="items[shows]['chinese']" placeholder="請輸入國字">
+                    <input type="button" value="國字轉客語字" @click="c2h()"></input>
                 </div>
                 <div class="row">
-                    <input type="text" v-model.value="items[shows]['hakka']">
-                    <input type="button" value="客語字轉拼音"></input>
+                    <input type="text" v-model.value="items[shows]['hakka']" placeholder="請輸入客語字">
+                    <input type="button" value="客語字轉拼音" @click="h2p()"></input>
                 </div>
                 <div class="row">
-                    <input type="text" v-model.value="items[shows]['pinyin']">
-                    <input type="button" value="拼音轉語音"></input>
+                    <input type="text" v-model.value="items[shows]['pinyin']" placeholder="請輸入客語拼音">
+                    <input type="button" value="拼音轉語音" @click="p2v()"></input>
                 </div>
 
             </form>
