@@ -42,8 +42,8 @@ body,html{
 }
 .controler{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-content: center;
 }
 audio::-webkit-media-controls-panel {

@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>客語New Sample</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/phone.css">
+    <link rel="stylesheet" href="./css/tablet.css">
 </head>
 
 <body>
 
     <div id="app">
 
-        <div class="left panel" :class="{ active: menu }" >
+        <div class="left panel" :class="{ active: menu }">
             <div class="list">
 
                 <div class="list-item" :class="{active: item.isClick}" v-for="(item,index) in items" :key="item.chinese"
@@ -40,8 +41,10 @@
 
         </div>
 
-        <div @click="this.menu = !this.menu" class="menu"></div>
-        
+        <div @click="this.menu = !this.menu" class="menu">
+            <i class="fa-solid fa-chevron-right" :class="{ active: menu }"></i>
+        </div>
+
         <div class="right panel">
             <form class="col">
 

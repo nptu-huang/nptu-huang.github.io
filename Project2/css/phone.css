@@ -1,18 +1,31 @@
-@media screen and (min-width:375px) and (max-width: 540px) {
+@media screen and (max-width: 540px) {
 
-    .menu{
+    .menu {
         position: absolute;
         display: block;
-        content: ">";
         top: 50vh;
         color: black;
-        background-color: aqua;
-        padding: 10px;
-
+        background-color: rgb(184, 237, 250);
+        font-size: 1.5em;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 10px 5px 6px 3px;
     }
+    .menu i{
+        color: rgb(103, 182, 250);
+        transform: rotateZ(0deg);
+        transition: transform 0.5s ease;
+    }
+    .menu i.active{
+        color: rgb(64, 166, 255);
+        transform: rotateZ(-180deg);
+        transition: transform 0.5s ease;
+    }
+
     .right {
         background-color: aliceblue;
         width: 100vw;
+        height: 100vh;
         border-left: 1px solid rgb(199, 199, 199);
         padding: 20px;
     }
@@ -21,11 +34,25 @@
         position: absolute;
         background-color: rgb(144, 203, 255);
         width: 100vw;
+        height: 100vh;
+        top: 0px;
         left: -100vw;
         transition: left 0.5s ease;
     }
+
     .left.active {
         left: 0vw;
         transition: left 0.5s ease;
+    }
+    .controler{
+        margin-top: 5px;
+    }
+    .list{
+        height: 93vh;
+    }
+}
+@media screen and (max-width:375px) {
+    .list{
+        height: 90vh;
     }
 }
