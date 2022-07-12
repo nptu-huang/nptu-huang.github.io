@@ -50,6 +50,7 @@ body,html{
     align-content: center;
 }
 audio::-webkit-media-controls-panel {
+    z-index: 2;
     background-color: rgb(144, 203, 255);
 }
 .list{
