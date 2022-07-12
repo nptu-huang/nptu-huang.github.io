@@ -19,7 +19,7 @@ const hakka = {
             shows:0,
             mode:0,
             menu:0,
-            server:"",
+            server:"http://server.nvda888.tk:9000",
 
         }
 
@@ -51,9 +51,9 @@ const hakka = {
         async c2h(){
 
             let request = {
-                message: this.items[shows]['chinese']
+                message: this.items[this.shows]['chinese']
             }
-
+            console.log(request)
             let result = await fetch(this.server+"/c2h", {
                 method: 'post',
                 headers: {
@@ -64,15 +64,15 @@ const hakka = {
                 body: JSON.stringify(request)
             });
             let data = await result.json();
-            this.items[shows]['hakka'] = data['Msg']??"";
+            this.items[this.shows]['hakka'] = data['Msg']??"";
 
         },
         async h2p(){
            
             let request = {
-                message: this.items[shows]['hakka']
+                message: this.items[this.shows]['hakka']
             }
-
+            console.log(request)
             let result = await fetch(this.server+"/h2p", {
                 method: 'post',
                 headers: {
@@ -83,15 +83,15 @@ const hakka = {
                 body: JSON.stringify(request)
             });
             let data = await result.json();
-            this.items[shows]['pinyin'] = data['Msg']??"";
+            this.items[this.shows]['pinyin'] = data['Msg']??"";
         },
         async p2v(){
             
             let request = {
-                message: this.items[shows]['pinyin']
+                message: `${this.items[this.shows]['pinyin']}`
             }
-
-            let result = await fetch(this.server+this.mode?'/f':'/t'+"/p2v", {
+            console.log(request)
+            let result = await fetch(this.server+'/p2vt', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,9 @@ const hakka = {
                 body: JSON.stringify(request)
             });
             let data = await result.json();
-            document.querySelector('audio').src = data['Msg'];
+            let len = String(data['Msg']).length;
+            let wav = "data:audio/wav;base64,"+String(data['Msg']).substring(2,len-1);
+            document.querySelector('audio').src = wav;
         },
         switchMode(){
             this.mode=!this.mode;

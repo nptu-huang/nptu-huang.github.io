@@ -8,6 +8,7 @@ body,html{
 #app{
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 .panel{
     height: 100vh;
@@ -15,12 +16,14 @@ body,html{
 .right{
     background-color: aliceblue;
     width: 80vw;
+    height: 100%;
     border-left: 1px solid rgb(199, 199, 199);
     padding: 20px;
 }
 .left{
     background-color: rgb(144, 203, 255);
     width: 20vw;
+    height: 100%;
 }
 .add{
     margin-top: 10px;
@@ -116,10 +119,10 @@ audio::-webkit-media-controls-panel {
     border-top:1px solid black ;
     border-bottom: 1px solid black;
     border-left: 1px solid black;
-    -moz-border-top-left-radius: 6px;
-    -webkit-border-top-left-radius: 6px;
-    -moz-border-bottom-left-radius: 6px;
-    -webkit-border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-left-radius: 6px;
     padding-left: 15px;
     width: 70%;
     font-size: 1.2em;
@@ -129,10 +132,10 @@ audio::-webkit-media-controls-panel {
     border-top:1px solid black ;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
-    -moz-border-top-right-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-bottom-right-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     border-left: 1px solid rgba(0, 0, 0, 0.233);
     background-color: rgb(197, 228, 255);
     text-align: left;
