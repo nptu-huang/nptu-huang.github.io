@@ -52,11 +52,13 @@
         margin-top: 5px;
     }
     .list{
-        height: 93%;
+        height: 93vh;
+        height: calc(var(--vh, 1vh) * 93);
     }
 }
 @media screen and (max-width:375px) {
     .list{
-        height: 90%;
+        height: 90vh;
+        height: calc(var(--vh, 1vh) * 90);
     }
 }
