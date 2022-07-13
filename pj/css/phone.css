@@ -1,9 +1,5 @@
 @media screen and (max-width: 540px) {
 
-    #app{
-        height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
-    }
     .menu {
         position: absolute;
         z-index: 5;
@@ -28,11 +24,7 @@
     }
 
     .right {
-        background-color: aliceblue;
-        width: 100vw;
-        height: 100%;
-        border-left: 1px solid rgb(199, 199, 199);
-        padding: 20px;
+        width: calc( 100vw - 40px );
     }
 
     .left {
@@ -40,7 +32,6 @@
         z-index: 5;
         background-color: rgb(144, 203, 255);
         width: 100vw;
-        height: 100%;
         top: 0px;
         left: -100vw;
         transition: left 0.5s ease;
@@ -50,7 +41,7 @@
         left: 0vw;
         transition: left 0.5s ease;
     }
-    .controler{
+    .left .controler{
         margin-top: 5px;
     }
     .list{

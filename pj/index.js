@@ -6,7 +6,7 @@ const hakka = {
                     "chinese": "種田就跟讀書一樣",
                     "hakka": "耕田同讀書",
                     "pinyin": "gang24 tien11 tung11 tug5 su24",
-                    "voice": ""
+                    "voice": ``
                 },
                 {
                     "chinese": "爸爸說我們客家人最重要的兩件事",
@@ -19,6 +19,9 @@ const hakka = {
             shows:0,
             mode:0,
             menu:0,
+            audioDuration:"0:00",
+            audioCurrentTime:"0:00",
+            play:"true",
             server:"http://server.nvda888.tk:9000",
 
         }
@@ -31,6 +34,37 @@ const hakka = {
         this.items[this.shows]['isClick']=true;
     },
     methods: {
+        timeUpdate(){
+            let audio = document.querySelector('audio');
+            let currentTime = audio.currentTime;
+            let duration = audio.duration;
+            let rate = parseFloat(currentTime / duration);
+
+            let min = parseInt(currentTime/60);
+            let sec = parseInt(currentTime%60);
+            this.audioCurrentTime = `${min}:${String(sec).padStart(2,"0")}`;
+            let bar = document.querySelector('.timebar-progress');
+            bar.setAttribute("style",`width:${rate*100}%;`);
+        },
+        updatePaused(event){
+            this.videoElement = event.target;
+            this.paused = event.target.paused;
+            let audio = document.querySelector('audio');
+            let duration = audio.duration;
+            let min = parseInt(duration/60);
+            let sec = parseInt(duration%60);
+            this.audioDuration =`${min}:${String(sec).padStart(2,"0")}`;
+        },
+        async audioplay(){
+            console.log('play')
+            let audio = document.querySelector('audio');
+            await audio.play();
+        },
+        pause(){
+            console.log('pause')
+            let audio = document.querySelector('audio');
+            audio.pause();
+        },
         itemClick(id){
             this.shows=id;
             this.items.forEach( item =>{
@@ -38,6 +72,8 @@ const hakka = {
             });
             this.items[id].isClick =true;
             this.menu = !this.menu;
+            let audio = document.querySelector('audio');
+            audio.src = this.items[id].voice;
         },
         addItem(){
             this.items.push({
@@ -85,7 +121,7 @@ const hakka = {
             let data = await result.json();
             this.items[this.shows]['pinyin'] = data['Msg']??"";
         },
-        async p2v(){
+        async p2v(item){
             
             let request = {
                 message: `${this.items[this.shows]['pinyin']}`
@@ -104,6 +140,8 @@ const hakka = {
             let len = String(data['Msg']).length;
             let wav = "data:audio/wav;base64,"+String(data['Msg']).substring(2,len-1);
             document.querySelector('audio').src = wav;
+            item.voice = wav;
+            console.log(wav);
         },
         switchMode(){
             this.mode=!this.mode;

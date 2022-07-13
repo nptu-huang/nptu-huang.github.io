@@ -1,31 +1,94 @@
-body,html{
+body, html {
     margin: 0;
     overflow: hidden;
 }
-.menu{
+
+.menu {
     display: none;
 }
-#app{
+
+#app {
     display: flex;
     flex-direction: row;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
-.panel{
+
+.panel {
     height: 100vh;
 }
-.right{
+
+.right {
     background-color: aliceblue;
     width: 80vw;
-    height: 100%;
+    height: calc( 100% - 90px );
     border-left: 1px solid rgb(199, 199, 199);
     padding: 20px;
 }
-.left{
+
+.player{
+    user-select: none;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    left: 0px;
+    bottom: 0px;
+    background-color: rgb(60, 155, 233);
+}
+
+.player .controler{
+    max-width: 300px;
+    position: relative;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    top: 35%;
+}
+
+.timebar{
+    width: 100px;
+    height: 6px;
+    border-radius: 50px;
+    background-color: rgb(148, 148, 148);
+    cursor: pointer;
+}
+
+.timebar-progress{
+    position: relative;
+    height: 6px;
+    width:0%;
+    background-color: rgb(197, 197, 197);
+}
+.timebar:hover .timebar-progress>.ball{
+    display: block;
+    position: relative;
+    height: 14px;
+    width: 14px;
+    top: -4px;
+    left: calc( 100% - 3px );
+    border-radius: 50%;
+    background-color: rgb(197, 197, 197);
+}
+
+.fas{
+    cursor: pointer;
+}
+
+.fas.active{
+    display: none;
+}
+
+.left {
     background-color: rgb(144, 203, 255);
     width: 20vw;
-    height: 100%;
 }
-.add{
+
+.left * {
+    user-select: none;
+}
+
+.add {
     margin-top: 10px;
     align-self: center;
     text-align: center;
@@ -38,37 +101,45 @@ body,html{
     transition: all 0.4s ease;
     user-select: none;
 }
-.add:hover{
+
+.add:hover {
     background-color: rgba(44, 169, 219, 0.541);
     border: 1px solid rgba(146, 146, 146, 0.884);
     transition: all 0.4s ease;
 }
-.controler{
+
+.left .controler {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-content: center;
 }
+
 audio::-webkit-media-controls-panel {
     z-index: 2;
     background-color: rgb(144, 203, 255);
 }
-.list{
+
+.list {
     height: 90vh;
     background-color: antiquewhite;
     overflow-y: scroll;
 }
-.list::-webkit-scrollbar{
+
+.list::-webkit-scrollbar {
     width: 1px;
 }
-.list::-webkit-scrollbar-track{
+
+.list::-webkit-scrollbar-track {
     opacity: 1;
     background-color: rgb(185, 185, 185);
 }
-.list::-webkit-scrollbar-thumb{
+
+.list::-webkit-scrollbar-thumb {
     background-color: rgb(97, 97, 97);
 }
-.list-item{
+
+.list-item {
     display: flex;
     flex-direction: column;
     user-select: none;
@@ -80,44 +151,53 @@ audio::-webkit-media-controls-panel {
     overflow: hidden;
     cursor: pointer;
 }
+
 .list-item:hover {
     content: "";
     background-color: rgb(224, 224, 224);
     transition: background-color 0.5s ease;
 }
-.list-item span{
-    display : inline-block;
+
+.list-item span {
+    display: inline-block;
     width: 100%;
-    overflow : hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space : nowrap;
+    white-space: nowrap;
     margin-bottom: 3px;
 }
-.list-item.active{
+
+.list-item.active {
     background-color: rgba(182, 223, 250, 0.644);
 }
+
 .col {
     display: flex;
     flex-direction: column;
 }
+
 .row {
     display: flex;
     flex-direction: row;
 }
-.row input{
+
+.row input {
     outline: none;
     background-color: aliceblue;
     border: 0px;
     margin-top: 10px;
 }
-.row input:nth-child(1){
+
+.row input:nth-child(1) {
     width: 20em;
 }
-.row input:nth-child(2){
+
+.row input:nth-child(2) {
     width: 6.8em;
 }
-.row input[type=text]{
-    border-top:1px solid black ;
+
+.row input[type=text] {
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-top-left-radius: 6px;
@@ -128,9 +208,10 @@ audio::-webkit-media-controls-panel {
     width: 70%;
     font-size: 1.2em;
 }
-.row input[type=button]{
+
+.row input[type=button] {
     cursor: pointer;
-    border-top:1px solid black ;
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-top-right-radius: 6px;
@@ -144,13 +225,13 @@ audio::-webkit-media-controls-panel {
     transition: background-color 0.4s ease;
 }
 
-.row input[type=button]:hover{
+.row input[type=button]:hover {
     background-color: rgb(134, 199, 255);
     transition: background-color 0.4s ease;
 }
 
 
-.slide-switch{
+.slide-switch {
     position: relative;
     border-radius: 10px;
     width: 40px;
@@ -161,16 +242,19 @@ audio::-webkit-media-controls-panel {
     cursor: pointer;
 
 }
-.slide-switch.active{
+
+.slide-switch.active {
     background-color: rgb(151, 151, 151);
 }
-.slide-switch.active .ball{
+
+.slide-switch.active .ball {
     user-select: none;
     margin-left: calc(100% - 20px);
     background-color: rgb(231, 40, 40);
     transition: margin 0.5s ease;
 }
-.ball{
+
+.slide-switch .ball {
     position: relative;
     height: 20px;
     width: 20px;

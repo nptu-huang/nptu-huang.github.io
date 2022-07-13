@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>客語New Sample</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/phone.css">
     <link rel="stylesheet" href="./css/tablet.css">
@@ -38,31 +40,63 @@
                 </div>
 
             </div>
-            
+
         </div>
 
         <div @click="this.menu = !this.menu" class="menu">
             <i class="fa-solid fa-chevron-right" :class="{ active: menu }"></i>
         </div>
 
-        <div class="right panel">
-            <form class="col">
-                <audio controls autoplay ></audio>
+        <div class="panel">
+            <div class="right">
 
-                <div class="row">
-                    <input type="text" v-model.value="items[shows]['chinese']" placeholder="請輸入國字">
-                    <input type="button" value="國字轉客語字" @click="c2h()"></input>
-                </div>
-                <div class="row">
-                    <input type="text" v-model.value="items[shows]['hakka']" placeholder="請輸入客語字">
-                    <input type="button" value="客語字轉拼音" @click="h2p()"></input>
-                </div>
-                <div class="row">
-                    <input type="text" v-model.value="items[shows]['pinyin']" placeholder="請輸入客語拼音">
-                    <input type="button" value="拼音轉語音" @click="p2v()"></input>
+                <form>
+
+                    <div class="row">
+                        <input type="text" v-model.value="items[shows]['chinese']" placeholder="請輸入國字">
+                        <input type="button" value="國字轉客語字" @click="c2h()"></input>
+                    </div>
+                    <div class="row">
+                        <input type="text" v-model.value="items[shows]['hakka']" placeholder="請輸入客語字">
+                        <input type="button" value="客語字轉拼音" @click="h2p()"></input>
+                    </div>
+                    <div class="row">
+                        <input type="text" v-model.value="items[shows]['pinyin']" placeholder="請輸入客語拼音">
+                        <input type="button" value="拼音轉語音" @click="p2v(items[shows])"></input>
+                    </div>
+
+                </form>
+                
+                <audio autoplay @playing="this.play = false"@pause="this.play =true" @canplay="updatePaused" @timeupdate="timeUpdate"></audio>
+
+            </div>
+            <div class="player">
+
+                <div class="controler row">
+
+                    <div style="width: 1em;">
+                        <i class="fas fa-play" :class="{ active: !play }" @click="audioplay" ></i>
+                        <i class="fas fa-pause" :class="{ active: play } " @click="pause" ></i>
+                    </div>
+                    
+                    <div>
+                        <span>{{this.audioCurrentTime}}</span>
+                        <span>/{{this.audioDuration}}</span>
+                    </div>
+
+                    <div class="timebar-section">
+                        <div class="timebar">
+                            <div class="timebar-progress">
+                                <div class="ball"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <i class="fa-solid fa-circle-arrow-down" style="cursor: pointer;"></i>
                 </div>
 
-            </form>
+            </div>
+
         </div>
 
     </div>
@@ -75,4 +109,5 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js'></script>
 <script src="./index.js"></script>
 <script src="./css/safari.js"></script>
+
 </html>
