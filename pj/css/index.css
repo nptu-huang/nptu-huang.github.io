@@ -2,7 +2,6 @@ body, html {
     margin: 0;
     overflow: hidden;
 }
-
 .menu {
     display: none;
 }
@@ -70,7 +69,9 @@ body, html {
     border-radius: 50%;
     user-select: none;
     background-color: rgb(197, 197, 197);
+    cursor: grab;
 }
+
 
 .fas{
     cursor: pointer;

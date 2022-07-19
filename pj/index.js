@@ -22,10 +22,7 @@ const hakka = {
             audioDuration: "0:00",
             audioCurrentTime: "0:00",
             play: "true",
-            position:{
-                start: 0,
-                end: 100
-            },
+            isdrag:false,
             server: "http://server.nvda888.tk:9000",
 
         }
@@ -39,33 +36,40 @@ const hakka = {
     },
     methods: {
         drag(e){
-            //console.clear();
-
-            let bar = document.querySelector('.timebar .timebar-progress');
-            let originWidth = bar.style.width;
-
-            //bar.setAttribute("style", `width:${parseFloat(originWidth)}%;`)
-
-
+            this.isdrag=true;
             let dgx = e.offsetX;
-            console.log("X",dgx,"\t drag")
-        },
-        dragEnd(e) {
-            let dgx = e.offsetX;
-            console.log("X", dgx,"\t dragEnd")
-
             let bar = document.querySelector('.timebar .timebar-progress');
-            let originWidth = parseInt(bar.style.width);
-            console.log("ORG : ",originWidth , "DGX : ",dgx)
-            
+            let originWidth = parseInt(bar.style.width) || 0;
+
             originWidth += dgx;
+            originWidth = originWidth??1
             if(originWidth > 100 ) originWidth = 100;
             if(originWidth < 0 ) originWidth = 0;
             
-            console.log("New : " ,originWidth)
-            bar.setAttribute("style", `width: ${ parseInt(originWidth) } px;`)
+            bar.setAttribute("style", `width:${originWidth}%;`);
+        },
+        dragEnd(e) {
+            this.isdrag=false;
+            let dgx = e.offsetX;
 
-            //console.log("dragEnd");
+
+            let bar = document.querySelector('.timebar .timebar-progress');
+            let originWidth = parseInt(bar.style.width) || 0;
+        
+            
+            originWidth += dgx;
+            originWidth = originWidth??1
+            if(originWidth > 100 ) originWidth = 100;
+            if(originWidth < 0 ) originWidth = 0;
+            
+            let audio = document.querySelector('audio');
+            if(audio.src)
+            {
+            bar.setAttribute("style", `width:${originWidth}%;`);
+
+                let duration = audio.duration;
+                audio.currentTime = parseFloat(duration * originWidth/100 );
+            }
         },
         timeUpdate() {
             let audio = document.querySelector('audio');
