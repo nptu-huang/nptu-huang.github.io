@@ -4,6 +4,9 @@ function safariHacks() {
     window.addEventListener('resize', function () {
         document.querySelector('#app').style.setProperty('--vh', windowsVH + 'px');
     });
+    document.addEventListener('resize', function () {
+        document.querySelector('#app').style.setProperty('--vh', windowsVH + 'px');
+    });
 }
 
 safariHacks();

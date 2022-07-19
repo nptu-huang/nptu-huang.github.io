@@ -71,6 +71,15 @@ const hakka = {
                 audio.currentTime = parseFloat(duration * originWidth/100 );
             }
         },
+        getVoice(){
+            var a = document.createElement('a');
+            let audio = document.querySelector('audio');
+            a.href = audio.src;
+            a.download = "FileName.wav"
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        },
         timeUpdate() {
             let audio = document.querySelector('audio');
             let currentTime = audio.currentTime;
