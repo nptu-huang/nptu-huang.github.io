@@ -1,3 +1,4 @@
+import { hide, show } from "./load.js";
 const hakka = {
     data() {
         return {
@@ -168,7 +169,7 @@ const hakka = {
             this.items[this.shows]['pinyin'] = data['Msg'] ?? "";
         },
         async p2v(item) {
-
+            show();
             let request = {
                 message: `${this.items[this.shows]['pinyin']}`
             }
@@ -182,12 +183,12 @@ const hakka = {
                 redirect: 'follow',
                 body: JSON.stringify(request)
             });
+            hide();
             let data = await result.json();
             let len = String(data['Msg']).length;
             let wav = "data:audio/wav;base64," + String(data['Msg']).substring(2, len - 1);
             document.querySelector('audio').src = wav;
             item.voice = wav;
-            console.log(wav);
         },
         switchMode() {
             this.mode = !this.mode;
