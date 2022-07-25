@@ -59,16 +59,16 @@
                 <form>
 
                     <div class="row">
-                        <input type="text" v-model.value="items[shows]['chinese']" placeholder="請輸入國字">
-                        <input type="button" value="國字轉客語字" @click="c2h()"></input>
+                        <textarea rows="3" v-model="items[shows]['chinese']" placeholder="請輸入國字"></textarea>
+                        <input type="button" value="國字轉客語字" @click="c2h()"></ㄔ>
                     </div>
                     <div class="row">
-                        <input type="text" v-model.value="items[shows]['hakka']" placeholder="請輸入客語字">
-                        <input type="button" value="客語字轉拼音" @click="h2p()"></input>
+                        <textarea rows="3" v-model="items[shows]['hakka']" placeholder="請輸入客語字"></textarea>
+                        <input type="button" value="客語字轉拼音" @click="h2p()"></ㄔ>
                     </div>
                     <div class="row">
-                        <input type="text" v-model.value="items[shows]['pinyin']" placeholder="請輸入客語拼音">
-                        <input type="button" value="拼音轉語音" @click="p2v(items[shows])"></input>
+                        <textarea rows="3" v-model="items[shows]['pinyin']" placeholder="請輸入客語拼音"></textarea>
+                        <input type="button" value="拼音轉語音" @click="p2v(items[shows])"></ㄔ>
                     </div>
 
                 </form>

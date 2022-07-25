@@ -43,6 +43,7 @@ export function show(){
 }
 
 export function hide(){
+    
     load.$data.show=false;
 }
 
