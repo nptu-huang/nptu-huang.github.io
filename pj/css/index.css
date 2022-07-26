@@ -215,7 +215,7 @@ form .row{
 .row input[type = button]{
     right: 0px;
     margin-right: 0px;
-    background-color: rgb(145, 189, 240);
+    background-color: rgb(195, 221, 252);
     width: 15%;
     cursor: pointer;
 }
