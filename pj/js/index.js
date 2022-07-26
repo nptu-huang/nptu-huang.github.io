@@ -162,8 +162,8 @@ const hakka = {
             })
             this.itemClick(this.items.length - 1);
         },
-        async c2h() {
-
+        async c2h(e) {
+            e.preventDefault()
             let request = {
                 message: this.items[this.shows]['chinese']
             }
@@ -181,8 +181,8 @@ const hakka = {
             this.items[this.shows]['hakka'] = data['Msg'] ?? "";
 
         },
-        async h2p() {
-
+        async h2p(e) {
+            e.preventDefault()
             let request = {
                 message: this.items[this.shows]['hakka']
             }
@@ -199,7 +199,8 @@ const hakka = {
             let data = await result.json();
             this.items[this.shows]['pinyin'] = data['Msg'] ?? "";
         },
-        async p2v(item) {
+        async p2v(e,item) {
+            e.preventDefault()
             show();
             let request = {
                 message: `${this.items[this.shows]['pinyin']}`

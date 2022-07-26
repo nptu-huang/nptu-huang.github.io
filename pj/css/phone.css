@@ -28,11 +28,18 @@
     }
     .row input[type = button]{
         right: 0px;
-        margin-right: 0px;
         width: 100%;
+        margin-bottom: 0px;
         border-radius: 0px;
         padding: 3px 5px;
-        bottom: -20px;
+        cursor: pointer;
+    }
+
+    .row button{
+        width: 100%;
+        margin: 0px;
+        border-radius: 0px;
+        padding: 3px 5px;
         cursor: pointer;
     }
 

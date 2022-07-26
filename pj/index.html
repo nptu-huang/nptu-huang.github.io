@@ -18,8 +18,8 @@
 <body>
 
     <div id="load">
-        <loadcircle v-if="this.show" ></loadcircle>
-        <loadtext class="loadText" v-if="this.show" > </loadtext>
+        <loadcircle v-if="this.show"></loadcircle>
+        <loadtext class="loadText" v-if="this.show"> </loadtext>
     </div>
 
     <div id="app">
@@ -60,20 +60,30 @@
 
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['chinese']" placeholder="請輸入國字"></textarea>
-                        <input type="button" value="國字轉客語字" @click="c2h()"></ㄔ>
+                        <button @click="c2h($event)">
+                            國字轉客語字
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
                     </div>
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['hakka']" placeholder="請輸入客語字"></textarea>
-                        <input type="button" value="客語字轉拼音" @click="h2p()"></ㄔ>
+                        <button type="button" @click="h2p($event)">
+                            客語字轉拼音
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
                     </div>
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['pinyin']" placeholder="請輸入客語拼音"></textarea>
-                        <input type="button" value="拼音轉語音" @click="p2v(items[shows])"></ㄔ>
+                        <button type="button" @click="p2v($event,items[shows])">
+                            拼音轉語音
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
                     </div>
 
                 </form>
-                
-                <audio autoplay @playing="this.play = false"@pause="this.play =true" @canplay="updatePaused" @timeupdate="timeUpdate"></audio>
+
+                <audio autoplay @playing="this.play = false" @pause="this.play =true" @canplay="updatePaused"
+                    @timeupdate="timeUpdate"></audio>
 
             </div>
             <div class="player">
@@ -81,10 +91,10 @@
                 <div class="controler row">
 
                     <div style="width: 1em;">
-                        <i class="fas fa-play" :class="{ active: !play }" @click="audioplay" ></i>
-                        <i class="fas fa-pause" :class="{ active: play } " @click="pause" ></i>
+                        <i class="fas fa-play" :class="{ active: !play }" @click="audioplay"></i>
+                        <i class="fas fa-pause" :class="{ active: play } " @click="pause"></i>
                     </div>
-                    
+
                     <div>
                         <span>{{this.audioCurrentTime}}</span>
                         <span>/{{this.audioDuration}}</span>
@@ -93,17 +103,13 @@
                     <div class="timebar-section">
                         <div class="timebar" @click="barClick($event)">
                             <div class="timebar-progress">
-                                <div draggable="true" 
-                                @dragend="dragEnd($event)"
-                                @drag="drag($event)"
-                                @touchmove="tmove($event)"
-                                @touchend="tend($event)"
-                                @touchstart="tstart($event)"
-                                class="ball"></div>
+                                <div draggable="true" @dragend="dragEnd($event)" @drag="drag($event)"
+                                    @touchmove="tmove($event)" @touchend="tend($event)" @touchstart="tstart($event)"
+                                    class="ball"></div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <i class="fa-solid fa-circle-arrow-down" @click="getVoice()" style="cursor: pointer;"></i>
                 </div>
 
