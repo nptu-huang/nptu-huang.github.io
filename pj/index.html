@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="timebar-section">
-                        <div class="timebar">
+                        <div class="timebar" @click="barClick($event)">
                             <div class="timebar-progress">
                                 <div draggable="true" 
                                 @dragend="dragEnd($event)"

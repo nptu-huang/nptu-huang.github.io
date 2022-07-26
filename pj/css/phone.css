@@ -26,21 +26,16 @@
     form .row{
         flex-direction: column;
     }
-    .row input[type = text]{
-        height: 100px;
-        padding-left: 10px;
-        width: 100%;
-    }
     .row input[type = button]{
         right: 0px;
         margin-right: 0px;
-        background-color: rgb(214, 202, 247);
         width: 100%;
         cursor: pointer;
     }
 
     .right {
         width: 100vw;
+        height: calc(var(--vh, 1vh) * 100);
     }
 
     .left {

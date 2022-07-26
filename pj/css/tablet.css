@@ -2,8 +2,7 @@
     .right {
         background-color: aliceblue;
         border-left: 1px solid rgb(199, 199, 199);
-        padding:20px;
-        width: calc( 60vw - 40px );
+        width: 60vw;
     }
 
     .left {
