@@ -1,3 +1,4 @@
+let start = 0;
 import { hide, show } from "./load.js";
 const hakka = {
     data() {
@@ -23,7 +24,7 @@ const hakka = {
             audioDuration: "0:00",
             audioCurrentTime: "0:00",
             play: "true",
-            isdrag: false,
+
             server: "http://server.nvda888.tk:9000",
 
         }
@@ -36,8 +37,28 @@ const hakka = {
         this.items[this.shows]['isClick'] = true;
     },
     methods: {
+        tmove(e) {
+            let bar = document.querySelector('.timebar .timebar-progress');
+            let originWidth = parseInt(bar.style.width) || 0;
+
+            let offsetX = (e.touches[0].clientX - start);
+            start = e.touches[0].clientX;
+            originWidth += offsetX;
+            originWidth = originWidth ?? 1
+            if (originWidth > 100) originWidth = 100;
+            if (originWidth < 0) originWidth = 0;
+            let audio = document.querySelector('audio');
+            if (audio.src) {
+                bar.setAttribute("style", `width:${originWidth}%;`);
+                audio.currentTime = parseFloat(audio.duration * originWidth / 100);
+            }
+        },
+        tend(e) {
+        },
+        tstart(e) {
+            start = e.touches[0].clientX
+        },
         barClick(e) {
-            console.log(e.offsetX);
             let dgx = e.offsetX;
             let bar = document.querySelector('.timebar .timebar-progress');
             let audio = document.querySelector('audio');
@@ -47,10 +68,9 @@ const hakka = {
                 let duration = audio.duration;
                 audio.currentTime = parseFloat(duration * dgx / 100);
             }
-            
+
         },
         drag(e) {
-            this.isdrag = true;
             let dgx = e.offsetX;
             let bar = document.querySelector('.timebar .timebar-progress');
             let originWidth = parseInt(bar.style.width) || 0;
@@ -63,7 +83,6 @@ const hakka = {
             bar.setAttribute("style", `width:${originWidth}%;`);
         },
         dragEnd(e) {
-            this.isdrag = false;
             let dgx = e.offsetX;
 
 

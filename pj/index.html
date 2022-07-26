@@ -96,6 +96,9 @@
                                 <div draggable="true" 
                                 @dragend="dragEnd($event)"
                                 @drag="drag($event)"
+                                @touchmove="tmove($event)"
+                                @touchend="tend($event)"
+                                @touchstart="tstart($event)"
                                 class="ball"></div>
                             </div>
                         </div>
