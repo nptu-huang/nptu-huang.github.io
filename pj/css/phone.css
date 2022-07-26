@@ -35,7 +35,7 @@
 
     .right {
         width: 100vw;
-        height: calc(var(--vh, 1vh) * 100);
+        height: calc(-50px + var(--vh, 1vh) * 100 );
     }
 
     .left {
