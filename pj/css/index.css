@@ -210,7 +210,6 @@ form .row{
 .row textarea{
     resize: none;
     padding: 10px;
-    border-radius: 0px;
     width: 85%;
 }
 .row input[type = button]{
