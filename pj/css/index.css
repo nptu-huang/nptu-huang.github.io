@@ -191,7 +191,7 @@ form .row{
     margin-top: 10px;
     border: 1px solid black;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 0px;
     justify-content: space-between;
     overflow-x: hidden;
 }
@@ -215,6 +215,7 @@ form .row{
 .row input[type = button]{
     right: 0px;
     margin-right: 0px;
+    border-radius: 0px;
     background-color: rgb(212, 198, 252);
     width: 15%;
     cursor: pointer;
