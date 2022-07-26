@@ -191,7 +191,7 @@ form .row{
     margin-top: 10px;
     border: 1px solid black;
     width: 100%;
-    border-radius: 0px;
+    border-radius: 8px;
     justify-content: space-between;
     overflow-x: hidden;
 }
@@ -213,10 +213,13 @@ form .row{
     width: 85%;
 }
 .row input[type = button]{
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
     right: 0px;
     margin-right: 0px;
     border-radius: 0px;
-    background-color: rgb(155, 207, 255);
+    background-color: rgb(178, 164, 255);
     width: 15%;
     cursor: pointer;
 }
