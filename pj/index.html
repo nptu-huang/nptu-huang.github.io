@@ -61,21 +61,27 @@
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['chinese']" placeholder="請輸入國字"></textarea>
                         <button @click="c2h($event)">
-                            國字轉客語字
+                            <span>
+                                國字轉客語字
+                            </span>
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
                     </div>
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['hakka']" placeholder="請輸入客語字"></textarea>
                         <button type="button" @click="h2p($event)">
-                            客語字轉拼音
+                            <span>
+                                客語字轉拼音
+                            </span>
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
                     </div>
                     <div class="row">
                         <textarea rows="3" v-model="items[shows]['pinyin']" placeholder="請輸入客語拼音"></textarea>
                         <button type="button" @click="p2v($event,items[shows])">
-                            拼音轉語音
+                            <span>
+                                拼音轉語音
+                            </span>
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
                     </div>

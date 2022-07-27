@@ -220,11 +220,15 @@ form .row {
     right: 0px;
     margin-right: 0px;
     border-radius: 0px;
-    background-color: rgb(116, 176, 255);
+    background-color: rgba(165, 201, 245, 0.356);
     width: 20%;
     cursor: pointer;
 }
-
+button span{
+    display: inline-block;
+    position: relative;
+    width: 6.5em;
+}
 button i {
     display: block;
     position: relative;
@@ -234,7 +238,7 @@ button i {
 }
 
 button:hover i {
-    left: 10px;
+    left: 5px;
     color: rgb(100, 100, 100);
     transition: left 0.5s ease,color 0.5s ease;
 }
