@@ -45,7 +45,7 @@ const hakka = {
                 content:`中文字:\n${this.items[this.shows]['chinese']}\n客語字:\n${this.items[this.shows]['hakka']}\n拼音:\n${this.items[this.shows]['pinyin']}\n建議:\n${this.items[this.shows]['advice']}
                 `
             }
-            await fetch(this.server + "/mail", {
+            let result = await fetch(this.server + "/mail", {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,6 +54,14 @@ const hakka = {
                 redirect: 'follow',
                 body: JSON.stringify(request)
             });
+            let text = await result.text();
+            console.log(text)
+            if(text.includes("success")){
+                this.reportHide = true;
+            }
+            else {
+                this.reportHide = false;
+            }
         },
         tmove(e) {
             let bar = document.querySelector('.timebar .timebar-progress');
