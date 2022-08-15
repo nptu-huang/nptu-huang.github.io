@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/phone.css">
     <link rel="stylesheet" href="./css/tablet.css">
     <link rel="stylesheet" href="./css/load.css">
+    <link rel="stylesheet" href="./css/report.css">
 </head>
 
 <body>
@@ -85,7 +86,13 @@
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
                     </div>
-
+                    <div class="row" style="font-size:1.3em;cursor: pointer;text-align:center;display:block;" @click="reportHide=!reportHide">
+                        
+                        <span>
+                            錯誤回報
+                        </span>    
+                        
+                    </div>
                 </form>
 
                 <audio autoplay @playing="this.play = false" @pause="this.play =true" @canplay="updatePaused"
@@ -123,6 +130,26 @@
 
         </div>
 
+        <div class="report" :class="{ hide: reportHide}">
+            <i class="fa-solid fa-xmark" style="font-size: 1.3em;cursor: pointer;" @click="reportHide=!reportHide"></i>
+            <div class="row report-item">
+                <textarea rows="3" v-model="items[shows]['chinese']" placeholder="請輸入國字"></textarea>
+
+            </div>
+            <div class="row report-item">
+
+                <textarea rows="3" v-model="items[shows]['hakka']" placeholder="請輸入客語字"></textarea>
+            </div>
+            <div class="row report-item">
+                <textarea rows="3" v-model="items[shows]['pinyin']" placeholder="請輸入客語拼音"></textarea>
+
+            </div>
+
+            <div class="row report-item button" @click="errReport">
+                    錯誤回報
+            </div>
+
+        </div>
     </div>
 
 

@@ -24,6 +24,7 @@ const hakka = {
             audioDuration: "0:00",
             audioCurrentTime: "0:00",
             play: "true",
+            reportHide:true,
 
             server: "http://server.nvda888.tk:9000",
 
@@ -37,6 +38,21 @@ const hakka = {
         this.items[this.shows]['isClick'] = true;
     },
     methods: {
+        async errReport(){
+            let request = {
+                content:`中文字:\n${this.items[this.shows]['chinese']}\n客語字:\n${this.items[this.shows]['hakka']}\n拼音:\n${this.items[this.shows]['pinyin']}
+                `
+            }
+            await fetch(this.server + "/mail", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Access-Control-Allow-Origin": "http://server.nvda888.tk"
+                },
+                redirect: 'follow',
+                body: JSON.stringify(request)
+            });
+        },
         tmove(e) {
             let bar = document.querySelector('.timebar .timebar-progress');
             let originWidth = parseInt(bar.style.width) || 0;
