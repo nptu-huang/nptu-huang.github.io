@@ -26,7 +26,7 @@ const hakka = {
             audioDuration: "0:00",
             audioCurrentTime: "0:00",
             play: "true",
-            reportHide:false,
+            reportHide:true,
 
             server: "http://server.nvda888.tk:9000",
 
