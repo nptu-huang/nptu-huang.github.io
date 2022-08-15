@@ -8,13 +8,15 @@ const hakka = {
                     "chinese": "我的家人在過年時踏春",
                     "hakka": "吾屋下人在過年該下踏春",
                     "pinyin": "nga24 tung55 vug2 ha24 fun24 ngin11 ng11 cai55 hi55 go55 ngien11 voi55 ge55 ha55 vi11 tab5 cun24",
-                    "voice": ""
+                    "voice": "",
+                    "advice":""
                 },
                 {
                     "chinese": "爸爸說我們客家人最重要的兩件事",
                     "hakka": "阿爸講𠊎等客家人盡重要个兩件事",
                     "pinyin": "a24 ba24 gong31 ngai11 den24 hag2 ga24 ngin11 qin55 cung55 ieu55 ge55 liong31 kian55 sii55",
-                    "voice": ""
+                    "voice": "",
+                    "advice":""
                 },
 
             ],
@@ -24,7 +26,7 @@ const hakka = {
             audioDuration: "0:00",
             audioCurrentTime: "0:00",
             play: "true",
-            reportHide:true,
+            reportHide:false,
 
             server: "http://server.nvda888.tk:9000",
 
@@ -40,7 +42,7 @@ const hakka = {
     methods: {
         async errReport(){
             let request = {
-                content:`中文字:\n${this.items[this.shows]['chinese']}\n客語字:\n${this.items[this.shows]['hakka']}\n拼音:\n${this.items[this.shows]['pinyin']}
+                content:`中文字:\n${this.items[this.shows]['chinese']}\n客語字:\n${this.items[this.shows]['hakka']}\n拼音:\n${this.items[this.shows]['pinyin']}\n建議:\n${this.items[this.shows]['advice']}
                 `
             }
             await fetch(this.server + "/mail", {

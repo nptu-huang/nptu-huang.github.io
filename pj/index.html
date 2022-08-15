@@ -144,7 +144,10 @@
                 <textarea rows="3" v-model="items[shows]['pinyin']" placeholder="請輸入客語拼音"></textarea>
 
             </div>
+            <div class="row report-item">
+                <textarea rows="3"  v-model="items[shows]['advice']" placeholder="錯誤說明（或建議）"></textarea>
 
+            </div>
             <div class="row report-item button" @click="errReport">
                     錯誤回報
             </div>
