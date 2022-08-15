@@ -7,7 +7,7 @@ const hakka = {
                 {
                     "chinese": "我的家人在過年時踏春",
                     "hakka": "吾屋下人在過年該下踏春",
-                    "pinyin": "nga24 tung55 vug2 ha24 fun24 ngin11 ng11 cai55 hi55 go55 ngien11 voi55 ge55 ha55 vi11 tab5 cun24",
+                    "pinyin": "nga24 vug2 ha24 ngin11 cai55 go55 ngien11 ge55 ha55 tab5 cun24",
                     "voice": "",
                     "advice":""
                 },
