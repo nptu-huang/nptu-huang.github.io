@@ -194,7 +194,7 @@ const hakka = {
                 message: this.items[this.shows]['chinese']
             }
             console.log(request)
-            let result = await fetch(this.server + "/api/c2h", {
+            let result = await fetch(this.server + "/c2h", {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ const hakka = {
                 message: this.items[this.shows]['hakka']
             }
             console.log(request)
-            let result = await fetch(this.server + "/api/h2p", {
+            let result = await fetch(this.server + "/h2p", {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -239,7 +239,7 @@ const hakka = {
                 message: `${this.items[this.shows]['pinyin']}`
             }
             console.log(request)
-            let result = await fetch(this.server + "/api/p2vf", {
+            let result = await fetch(this.server + "/p2vf", {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
