@@ -1,82 +1,278 @@
-body {
-    background-color: beige;
+body, html {
+    margin: 0;
+    overflow: hidden;
 }
 
-.bi:hover {
-    cursor: pointer;
-}
-
-div {
-    position: relative;
-}
-
-.bi {
-    font-size: 1.5em;
-}
-
-.container {
-    margin-top: 50px;
-}
-
-.alert {
+.menu {
     display: none;
 }
 
-.task-item-o {
-    margin-top: 10px;
-}
-.task-item-o>div{
+#app {
     display: flex;
-    flex-direction: column;
-    text-align: start;
+    flex-direction: row;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
-li.task-item-o{
-    border-radius: 50px;
-    border-radius: 10px !important;
-    background-color: rgb(218, 238, 255);
+.panel {
+    height: 100vh;
 }
 
-.playerContainer {
-    display: flex;
-    position: fixed;
-    bottom: 0px;
-    content: '';
-    background-color: rgb(158, 223, 241);
+.right {
+    background-color: aliceblue;
+    width: 80vw;
+    height: calc(100% - 50px);
+    border-left: 1px solid rgb(199, 199, 199);
+}
+
+.player {
+    user-select: none;
     width: 100%;
     height: 50px;
-    justify-content: center;
+    background-color: rgb(60, 155, 233);
+}
+
+.player .controler {
+    max-width: 300px;
+    position: relative;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    top: 35%;
+}
+
+.timebar {
+    width: 100px;
+    height: 6px;
+    border-radius: 50px;
+    background-color: rgb(148, 148, 148);
+    cursor: pointer;
+}
+
+.timebar-progress {
+    position: relative;
+    height: 6px;
+    width: 0%;
+    background-color: rgb(197, 197, 197);
+}
+
+.timebar:hover .timebar-progress>.ball {
+    display: block;
+    position: relative;
+    height: 14px;
+    width: 14px;
+    top: -4px;
+    left: calc(100% - 3px);
+    border-radius: 50%;
+    user-select: none;
+    background-color: rgb(197, 197, 197);
+    cursor: grab;
+}
+
+
+.fas {
+    cursor: pointer;
+}
+
+.fas.active {
+    display: none;
+}
+
+.left {
+    background-color: rgb(144, 203, 255);
+    width: 20vw;
+}
+
+.left * {
+    user-select: none;
+}
+
+.add {
+    margin-top: 10px;
+    align-self: center;
+    text-align: center;
+    background-color: rgba(44, 170, 219, 0.76);
+    cursor: pointer;
+    width: 5em;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(146, 146, 146, 0.671);
+    transition: all 0.4s ease;
+    user-select: none;
+}
+
+.add:hover {
+    background-color: rgba(44, 169, 219, 0.541);
+    border: 1px solid rgba(146, 146, 146, 0.884);
+    transition: all 0.4s ease;
+}
+
+.left .controler {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-content: center;
 }
 
 audio::-webkit-media-controls-panel {
-    background-color: rgb(158, 223, 241);
+    z-index: 2;
+    background-color: rgb(144, 203, 255);
 }
 
-.alert.show {
-    display: block;
-    position: absolute;
-    background-color: rgba(82, 196, 228, 0.774);
-    padding: 80px;
-    margin: auto;
-    margin-top: 25vh;
-    margin-left: 38vw;
-    z-index: 99;
-    color: rgb(0, 0, 0);
-    font-size: 1.5em;
+.list {
+    height: 90vh;
+    background-color: antiquewhite;
+    overflow-y: scroll;
 }
 
-.bck {
-    position: absolute;
+.list::-webkit-scrollbar {
+    width: 1px;
+}
+
+.list::-webkit-scrollbar-track {
+    opacity: 1;
+    background-color: rgb(185, 185, 185);
+}
+
+.list::-webkit-scrollbar-thumb {
+    background-color: rgb(97, 97, 97);
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
     user-select: none;
-    bottom: 60px;
-    right: 30px;
+    background-color: aliceblue;
+    padding: 10px;
+    border-top: 1px solid rgb(196, 196, 196);
+    transition: background-color 0.8s ease;
+    height: 4.3em;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.list-item:hover {
+    content: "";
+    background-color: rgb(224, 224, 224);
+    transition: background-color 0.5s ease;
+}
+
+.list-item span {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3px;
+}
+
+.list-item.active {
+    background-color: rgba(182, 223, 250, 0.644);
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    padding: 30px;
+}
+
+form .row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 8px;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+.row * {
+    border-radius: 0px;
+}
+
+.row textarea, .row input, .row button {
+    font-size: 1.2em;
+    outline: none;
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.row textarea {
+    resize: none;
+    padding: 10px;
+    width: 80%;
+}
+
+.row button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    right: 0px;
+    margin-right: 0px;
+    border-radius: 0px;
+    background-color: rgba(165, 201, 245, 0.356);
+    width: 20%;
+    cursor: pointer;
+}
+button span{
+    display: inline-block;
+    position: relative;
+    width: 6.5em;
+}
+button i {
+    display: block;
+    position: relative;
+    left: 0px;
+    color: rgb(44, 44, 44);
+    transition: left 0.5s ease,color 0.5s ease;
+}
+
+button:hover i {
+    left: 5px;
+    color: rgb(100, 100, 100);
+    transition: left 0.5s ease,color 0.5s ease;
 }
 
 
-svg {
-    opacity: 0.7;
-    height: 150px;
-    z-index: 0;
-    margin-top: 10vh;
+.slide-switch {
+    position: relative;
+    border-radius: 10px;
+    width: 40px;
+    height: 20px;
+    left: 10px;
+    user-select: none;
+    background-color: rgb(78, 169, 248);
+    cursor: pointer;
+
+}
+
+.slide-switch.active {
+    background-color: rgb(151, 151, 151);
+}
+
+.slide-switch.active .ball {
+    user-select: none;
+    margin-left: calc(100% - 20px);
+    background-color: rgb(231, 40, 40);
+    transition: margin 0.5s ease;
+}
+
+.slide-switch .ball {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin-left: 0px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    transition: margin 0.5s ease;
 }
