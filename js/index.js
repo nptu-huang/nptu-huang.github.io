@@ -28,7 +28,7 @@ const hakka = {
             play: "true",
             reportHide:true,
 
-            server: "http:hcilab.nptu.edu.tw:9000",
+            server: "http://hcilab.nptu.edu.tw:9000",
 
         }
 
@@ -189,6 +189,7 @@ const hakka = {
             this.itemClick(this.items.length - 1);
         },
         async c2h(e) {
+
             e.preventDefault()
             let request = {
                 message: this.items[this.shows]['chinese']
@@ -198,7 +199,6 @@ const hakka = {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "http://hcilab.nptu.edu.tw"
                 },
                 redirect: 'follow',
                 body: JSON.stringify(request)
