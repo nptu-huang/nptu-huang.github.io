@@ -198,7 +198,7 @@ const hakka = {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "http://server.nvda888.tk"
+                    "Access-Control-Allow-Origin": "http://server.nvda888.tk,http://hcilab.nptu.edu.tw"
                 },
                 redirect: 'follow',
                 body: JSON.stringify(request)
