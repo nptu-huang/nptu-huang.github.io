@@ -136,7 +136,7 @@
 
         </div>
 
-        <div class="report" :class="{ hide: reportHide}">
+        <div class="report hide" :class="{ hide: reportHide}">
             <i class="fa-solid fa-xmark" style="font-size: 1.3em;cursor: pointer;" @click="reportHide=!reportHide"></i>
             <div class="row report-item">
                 <textarea rows="3" v-model="items[shows]['chinese']" placeholder="請輸入國字"></textarea>
